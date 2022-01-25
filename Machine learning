@@ -252,8 +252,8 @@ with tf.Session() as sess:
         gt_index = np.where(groud_truth_table == ground_truth_protein)[0]
         gt_vector = protein_data[gt_index[0]]
 
-        #print("Current DNA: ", all_dna, " Encoded DNA: ", current_data)
-        #print("Current Protein: ", ground_truth_protein, " Encoded Protein Class: ", np.argmax(gt_vector),
+        print("Current DNA: ", all_dna, " Encoded DNA: ", current_data)
+        print("Current Protein: ", ground_truth_protein, " Encoded Protein Class: ", np.argmax(gt_vector),
              #" Prediceted Protein Class: ", np.argmax(sess_results[0]))
-        #print(" Encoded Protein Vector: ", gt_vector,' Predicted Vector: ', sess_results[0])
-        #('-----------')
+        print(" Encoded Protein Vector: ", gt_vector,' Predicted Vector: ', sess_results[0])
+        ('-----------')
