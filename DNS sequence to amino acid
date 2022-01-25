@@ -1,0 +1,39 @@
+f=open("#másold ide a DNS kódóló szekvencia text fájl elérési útvonalát a könyvtárodból és állítsd át a perjeleket, hogy a másik irányba döljenek","r")
+seq=f.read()
+seq=seq.replace("\n","")
+seq=seq.replace("\r","")
+
+table = {'ATA':'Ile', 'ATC':'Ile', 'ATT':'Ile', 'ATG':'Met',
+         'ACA':'Thr', 'ACC':'Thr', 'ACG':'Thr', 'ACT':'Thr',
+         'AAC':'Asn', 'AAT':'Asn', 'AAA':'Lys', 'AAG':'Lys',
+         'AGC':'Ser', 'AGT':'Ser', 'AGA':'Arg', 'AGG':'Arg',
+         'CTA':'Leu', 'CTC':'Leu', 'CTG':'Leu', 'CTT':'Leu',
+         'CCA':'Pro', 'CCC':'Pro', 'CCG':'Pro', 'CCT':'Pro',
+         'CAC':'His', 'CAT':'His', 'CAA':'Gln', 'CAG':'Gln',
+         'CGA':'Arg', 'CGC':'Arg', 'CGG':'Arg', 'CGT':'Arg',
+         'GTA':'Val', 'GTC':'Val', 'GTG':'Val', 'GTT':'Val',
+         'GCA':'Ala', 'GCC':'Ala', 'GCG':'Ala', 'GCT':'Ala',
+         'GAC':'Asp', 'GAT':'Asp', 'GAA':'Glu', 'GAG':'Glu',
+         'GGA':'Gly', 'GGC':'Gly', 'GGG':'Gly', 'GGT':'Gly',
+         'TCA':'Ser', 'TCC':'Ser', 'TCG':'Ser', 'TCT':'Ser',
+         'TTC':'Phe', 'TTT':'Phe', 'TTA':'Leu', 'TTG':'Leu',
+         'TAC':'Tyr', 'TAT':'Tyr', 'TAA':'-STOP', 'TAG':'-STOP',
+         'TGC':'Cys', 'TGT':'Cys', 'TGA':'-STOP', 'TGG':'Trp',}
+
+my_protein	=	""
+for	i	in range(0, len(seq),	3):
+        my_codon	=	seq[i:i+3]
+        AA	=	table[my_codon]
+        my_protein	=	my_protein	+	AA
+
+print(my_protein)
+
+
+
+
+
+
+
+
+
+
