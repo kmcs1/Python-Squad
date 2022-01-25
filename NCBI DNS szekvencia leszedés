@@ -1,0 +1,37 @@
+import os
+from Bio import SeqIO
+from Bio import Entrez
+
+Entrez.email = "kkk@gmail.com"  # Always tell NCBI who you are
+
+
+#genebank azonosító.fasta formátum, gén szekvenciájának letöltése
+filename = "MG762674.1.fasta"
+if not os.path.isfile(filename):
+    # Downloading...
+    net_handle = Entrez.efetch(
+        db="nucleotide", id="MG762674", rettype="fasta", retmode="text"
+    )
+    out_handle = open(filename, "w")
+    out_handle.write(net_handle.read())
+    out_handle.close()
+    net_handle.close()
+    print("Saved")
+
+print("Parsing...")
+record = SeqIO.read(filename, "fasta")
+
+#fasta fájl első sorának eltűntetése
+print("DNA Sequence: ", record)
+dna_withheader = (record.format("fasta"))
+delete_word= "delete "
+dna = delete_word + dna_withheader
+text_file = open("dna.txt", "w")
+text_file.write(dna)
+text_file.close()
+with open('dna.txt', 'r') as fin:
+    data = fin.read().splitlines(True)
+with open('dna.txt', 'w') as fout:
+    fout.writelines(data[1:])
+with open('dna.txt', 'r') as fin:
+    dna = fin.read()
